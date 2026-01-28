@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <style>
+        button {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: red;
+            margin-left: 10px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Task Manager</h2>
+
+<!-- Input + Add button -->
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add</button>
+
+<!-- Task list -->
+<ul id="taskList">
+    {% for task in tasks %}
+        <li id="task-{{ task.id }}">
+            {{ task.title }}
+            <button onclick="deleteTask({{ task.id }})">&#10006;</button>
+        </li>
+    {% empty %}
+        <li>No tasks yet</li>
+    {% endfor %}
+</ul>
+
+<!-- JS -->
+<script src="/static/js/main.js"></script>
+</body>
+</html>
